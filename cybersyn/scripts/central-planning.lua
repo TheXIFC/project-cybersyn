@@ -776,10 +776,11 @@ function tick_init(map_data, mod_settings)
 		for id, _ in pairs(map_data.queue_station_update) do
 			local station = map_data.stations[id]
 			if station then
-				local pre = station.allows_all_trains
+				local pre_allow_all = station.allows_all_trains
+				local pre_strict = station.layout_strict
 				if station.entity_comb1.valid then
 					set_station_from_comb(station)
-					if station.allows_all_trains ~= pre then
+					if station.allows_all_trains ~= pre_allow_all  or station.layout_strict ~= pre_strict then
 						update_stop_if_auto(map_data, station, true)
 					end
 				else

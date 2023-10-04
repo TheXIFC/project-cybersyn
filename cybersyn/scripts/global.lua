@@ -52,6 +52,7 @@
 ---@field public deliveries {[string]: int}
 ---@field public accepted_layouts {[uint]: true?}
 ---@field public layout_pattern (0|1|2|3)[]?
+---@field public layout_strict true?
 ---@field public tick_signals {[uint]: Signal}? --transient
 ---@field public item_p_counts {[string]: int} --transient
 ---@field public item_thresholds {[string]: int}? --transient

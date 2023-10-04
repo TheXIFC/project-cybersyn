@@ -444,10 +444,12 @@ function set_station_from_comb(station)
 	local allows_all_trains = bit_extract(bits, SETTING_DISABLE_ALLOW_LIST) > 0
 	local is_stack = bit_extract(bits, SETTING_IS_STACK) > 0
 	local enable_inactive = bit_extract(bits, SETTING_ENABLE_INACTIVE) > 0
+	local layout_strict = bit_extract(bits, SETTING_STRICT_LAYOUT) > 0
 
 	station.allows_all_trains = allows_all_trains
 	station.is_stack = is_stack
 	station.enable_inactive = enable_inactive
+	station.layout_strict = layout_strict
 	station.is_p = (is_pr_state == 0 or is_pr_state == 1) or nil
 	station.is_r = (is_pr_state == 0 or is_pr_state == 2) or nil
 

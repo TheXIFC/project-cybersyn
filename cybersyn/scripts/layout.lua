@@ -55,6 +55,66 @@ function is_layout_accepted(layout_pattern, layout)
 	return valid
 end
 
+---@param layout_pattern (0|1|2|3)[]
+---@param layout (0|1|2)[]
+function is_layout_accepted_strict(layout_pattern, layout)
+	local first_player = game.players[1]
+	first_player.print("here")
+
+	local valid = true
+	local index = 0
+	local layout_len = #layout
+	if layout[0] then
+		layout_len = layout_len - 1
+	end
+	for i, v in ipairs(layout) do
+		local p = layout_pattern[i] or 0
+		if (v == 1 and not (p == 1 or p == 3)) or (v == 2 and not (p == 2 or p == 3)) then
+			valid = false
+			break
+		end
+	end
+
+	index = layout_len
+	while (true) do
+		index = index + 1
+		if not layout_pattern[index] then
+			break
+		end
+		
+		if (layout_pattern[index] == 0) then
+			goto continue
+		end
+		valid = false
+		break
+	    ::continue::
+	end
+	if valid or not layout[0] then return valid end
+	for i, v in irpairs(layout) do
+		local p = layout_pattern[i] or 0
+		if (v == 1 and not (p == 1 or p == 3)) or (v == 2 and not (p == 2 or p == 3)) then
+			valid = false
+			break
+		end
+	end
+
+	index = layout_len
+	while (true) do
+		index = index + 1
+		if not layout_pattern[index] then
+			break
+		end
+		
+		if (layout_pattern[index] == 0) then
+			goto continue
+		end
+		valid = false
+		break
+	    ::continue::
+	end
+	return valid
+end
+
 ---@param map_data MapData
 ---@param train_id uint
 ---@param train Train
@@ -128,7 +188,11 @@ function set_train_layout(map_data, train)
 		map_data.layout_train_count[layout_id] = 1
 		for _, stop in pairs(map_data.stations) do
 			if stop.layout_pattern then
-				stop.accepted_layouts[layout_id] = is_layout_accepted(stop.layout_pattern, layout) or nil
+				if stop.layout_strict then
+					stop.accepted_layouts[layout_id] = is_layout_accepted_strict(stop.layout_pattern, layout) or nil
+				else
+					stop.accepted_layouts[layout_id] = is_layout_accepted(stop.layout_pattern, layout) or nil
+				end
 			end
 		end
 		for _, stop in pairs(map_data.refuelers) do
@@ -601,9 +665,16 @@ function reset_stop_layout(map_data, stop, is_station_or_refueler, forbidden_ent
 		end
 	end
 	stop.layout_pattern = layout_pattern
+	local layout_strict = stop.layout_strict
 	if is_station_or_refueler then
-		for id, layout in pairs(map_data.layouts) do
-			stop.accepted_layouts[id] = is_layout_accepted(layout_pattern, layout) or nil
+		if layout_strict then
+			for id, layout in pairs(map_data.layouts) do
+				stop.accepted_layouts[id] = is_layout_accepted_strict(layout_pattern, layout) or nil
+			end
+		else
+			for id, layout in pairs(map_data.layouts) do
+				stop.accepted_layouts[id] = is_layout_accepted(layout_pattern, layout) or nil
+			end
 		end
 	else
 		for id, layout in pairs(map_data.layouts) do

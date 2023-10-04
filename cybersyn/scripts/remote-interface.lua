@@ -217,6 +217,11 @@ function interface.is_layout_accepted(layout_pattern, layout)
 end
 ---@param layout_pattern (0|1|2|3)[]
 ---@param layout (0|1|2)[]
+function interface.is_layout_accepted_strict(layout_pattern, layout)
+	return is_layout_accepted_strict(layout_pattern, layout)
+end
+---@param layout_pattern (0|1|2|3)[]
+---@param layout (0|1|2)[]
 function interface.is_refuel_layout_accepted(layout_pattern, layout)
 	return is_refuel_layout_accepted(layout_pattern, layout)
 end
