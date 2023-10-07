@@ -10,8 +10,8 @@ for key, value in pairs(require("__core__.lualib.util")) do
 end
 
 util.paths = {
-  nav_icons = "__cybersyn__/graphics/gui/frame-action-icons.png",
-  shortcut_icons = "__cybersyn__/graphics/shortcut/ltn-manager-shortcut.png",
+  nav_icons = "__cybersyn_sal__/graphics/gui/frame-action-icons.png",
+  shortcut_icons = "__cybersyn_sal__/graphics/shortcut/ltn-manager-shortcut.png",
 }
 
 util.empty_checkmark = {

@@ -58,9 +58,6 @@ end
 ---@param layout_pattern (0|1|2|3)[]
 ---@param layout (0|1|2)[]
 function is_layout_accepted_strict(layout_pattern, layout)
-	local first_player = game.players[1]
-	first_player.print("here")
-
 	local valid = true
 	local index = 0
 	local layout_len = #layout

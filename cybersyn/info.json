@@ -1,16 +1,17 @@
 {
-    "name": "cybersyn",
-    "version": "1.2.16",
-    "title": "Project Cybersyn",
-    "author": "Mami",
+    "name": "cybersyn_sal",
+    "version": "0.0.1",
+    "title": "Project Cybersyn SAL",
+    "author": "TheXIFC",
     "factorio_version": "1.1",
-    "description": "Creates a feature-rich train logistics network through cybernetic combinators. With just this mod you can coordinate the economic inputs and outputs of your entire megabase.",
+    "description": "Adds posibility to only allow trains that loaded or unloaded by ALL inserters or pumps along station.",
     "dependencies": [
         "base",
         "flib >= 0.12.0",
         "? space-exploration >= 0.6.94",
         "? miniloader",
         "? nullius",
-        "? pypostprocessing"
+        "? pypostprocessing",
+        "! cybersyn"
     ]
 }

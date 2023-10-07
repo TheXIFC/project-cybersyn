@@ -1,9 +1,9 @@
 --By Mami
 combinator_entity = flib.copy_prototype(data.raw["arithmetic-combinator"]["arithmetic-combinator"], COMBINATOR_NAME)
-combinator_entity.icon = "__cybersyn__/graphics/icons/cybernetic-combinator.png"
+combinator_entity.icon = "__cybersyn_sal__/graphics/icons/cybernetic-combinator.png"
 combinator_entity.radius_visualisation_specification = {
 	sprite = {
-		filename = "__cybersyn__/graphics/icons/area-of-effect.png",
+		filename = "__cybersyn_sal__/graphics/icons/area-of-effect.png",
 		tint = {r = 1, g = 1, b = 0, a = .5},
 		height = 64,
 		width = 64,
@@ -17,10 +17,10 @@ if mods["nullius"] then
 	combinator_entity.localised_name = { "entity-name.cybersyn-combinator" }
 end
 
-local COMBINATOR_SPRITE = "__cybersyn__/graphics/combinator/cybernetic-combinator.png"
-local COMBINATOR_HR_SPRITE = "__cybersyn__/graphics/combinator/hr-cybernetic-combinator.png"
-local COMBINATOR_SHADOW = "__cybersyn__/graphics/combinator/cybernetic-combinator-shadow.png"
-local COMBINATOR_HR_SHADOW = "__cybersyn__/graphics/combinator/hr-cybernetic-combinator-shadow.png"
+local COMBINATOR_SPRITE = "__cybersyn_sal__/graphics/combinator/cybernetic-combinator.png"
+local COMBINATOR_HR_SPRITE = "__cybersyn_sal__/graphics/combinator/hr-cybernetic-combinator.png"
+local COMBINATOR_SHADOW = "__cybersyn_sal__/graphics/combinator/cybernetic-combinator-shadow.png"
+local COMBINATOR_HR_SHADOW = "__cybersyn_sal__/graphics/combinator/hr-cybernetic-combinator-shadow.png"
 combinator_entity.sprites = {
 	north = {layers = {
 		{
@@ -186,14 +186,14 @@ combinator_entity.sprites = {
 
 local function create_combinator_display_direction(x, y, shift)
 	return {
-			filename="__cybersyn__/graphics/combinator/cybernetic-displays.png",
+			filename="__cybersyn_sal__/graphics/combinator/cybernetic-displays.png",
 			x=x, y=y,
 			width=15, height=11,
 			shift=shift,
 			draw_as_glow=true,
 			hr_version={
 				scale=0.5,
-				filename="__cybersyn__/graphics/combinator/hr-cybernetic-displays.png",
+				filename="__cybersyn_sal__/graphics/combinator/hr-cybernetic-displays.png",
 				x=2*x, y=2*y,
 				width=30, height=22,
 				shift=shift,
@@ -233,7 +233,7 @@ combinator_out_entity.circuit_wire_max_distance = 3
 combinator_out_entity.flags = {"not-blueprintable", "not-deconstructable", "placeable-off-grid"}
 
 local origin = {0.0, 0.0}
-local invisible_sprite = {filename = "__cybersyn__/graphics/invisible.png", width = 1, height = 1}
+local invisible_sprite = {filename = "__cybersyn_sal__/graphics/invisible.png", width = 1, height = 1}
 local wire_con1 = {
 	red = origin,
 	green = origin
